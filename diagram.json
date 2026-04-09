@@ -1,0 +1,83 @@
+{
+  "version": 1,
+  "author": "Raghav Metange - Integrated Hub",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": -38.4, "left": -523.16, "attrs": {} },
+    { "type": "wokwi-servo", "id": "servo1", "top": -194, "left": -211.2, "attrs": {} },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "ultrasonic1",
+      "top": -180.9,
+      "left": 53.5,
+      "attrs": { "distance": "244" }
+    },
+    { "type": "wokwi-pir-motion-sensor", "id": "pir1", "top": 71.2, "left": 568.62, "attrs": {} },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd1",
+      "top": -339.2,
+      "left": -407.2,
+      "attrs": { "pins": "i2c" }
+    },
+    {
+      "type": "wokwi-slide-switch",
+      "id": "sw1",
+      "top": -187.6,
+      "left": -275.3,
+      "attrs": { "label": "Metal Det" }
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": 12,
+      "left": 126.6,
+      "attrs": { "volume": "0.1" }
+    },
+    { "type": "wokwi-relay-module", "id": "relay1", "top": -57.4, "left": 489.6, "attrs": {} },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": -3.4,
+      "left": -163.2,
+      "attrs": { "label": "Door IR" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn_vend",
+      "top": 198.2,
+      "left": 57.6,
+      "attrs": { "label": "Vend Touch" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "lcd1:GND", "esp:GND.1", "black", [] ],
+    [ "lcd1:VCC", "esp:5V", "red", [] ],
+    [ "lcd1:SDA", "esp:21", "green", [] ],
+    [ "lcd1:SCL", "esp:22", "yellow", [] ],
+    [ "sw1:1", "esp:GND.2", "black", [] ],
+    [ "sw1:2", "esp:33", "green", [] ],
+    [ "servo1:GND", "esp:GND.3", "black", [] ],
+    [ "servo1:V+", "esp:5V", "red", [] ],
+    [ "servo1:PWM", "esp:12", "orange", [] ],
+    [ "btn1:1.l", "esp:GND.3", "black", [] ],
+    [ "btn1:2.r", "esp:13", "blue", [] ],
+    [ "ultrasonic1:VCC", "esp:5V", "red", [] ],
+    [ "ultrasonic1:GND", "esp:GND.1", "black", [] ],
+    [ "ultrasonic1:TRIG", "esp:14", "purple", [] ],
+    [ "ultrasonic1:ECHO", "esp:27", "white", [] ],
+    [ "bz1:1", "esp:26", "red", [] ],
+    [ "bz1:2", "esp:GND.2", "black", [] ],
+    [ "pir1:VCC", "esp:5V", "red", [] ],
+    [ "pir1:GND", "esp:GND.3", "black", [] ],
+    [ "pir1:OUT", "esp:32", "cyan", [] ],
+    [ "relay1:VCC", "esp:5V", "red", [] ],
+    [ "relay1:GND", "esp:GND.3", "black", [] ],
+    [ "relay1:IN", "esp:25", "magenta", [] ],
+    [ "btn_vend:1.l", "esp:GND.2", "black", [] ],
+    [ "btn_vend:2.r", "esp:4", "pink", [] ]
+  ],
+  "dependencies": {}
+}
